@@ -1,0 +1,101 @@
+# Arrays
+- In Java, arrays hold a *fixed* number of values of one type
+- Arrays can hold any primitive, String, or object references
+- They are zero-indexed
+
+### To create an array Explicitly:
+Declare:
+`double[] prices;`
+or
+Declare and initialize:
+`double[] prices = {12.99, 14.50, 11.99};`
+
+### Importing Arrays
+To get a descriptive printout of an array instead of its memory location, add a toString() method by inputting `import java.util.Arrays;` at the top of the file (before the class declaration).
+> When we import the Arrays package, we make all of the methods of that package available in our code.
+
+This allows us to use `.toString()` on an instance instead of creating a separate method.
+```java
+Arrays.toString(arrayVariable);
+```
+Example:
+```java
+import java.util.Arrays;
+
+public class Newsfeed {
+
+	public Newsfeed(){
+
+	}
+
+	public String[] getTopics(){
+
+	String[] topics = {"Opinion", "Tech", "Science", "Health"};
+		return topics;
+	}
+
+	public static void main(String[] args){
+		Newsfeed sampleFeed = new Newsfeed();
+		String[] topics = sampleFeed.getTopics();
+		System.out.println(Arrays.toString(topics));
+	}
+}
+```
+### Get Element By Index
+Use `[]` to access data at a certain index
+```java
+double[] prices = {13.1, 15.87, 14.22, 16.66};  
+System.out.println(prices[1]);
+// Prints 15.87
+```
+### Creating an Empty Array
+Empty arrays need to be initialized with a fixed size.
+`String[] menuItems = new String[5];`
+After declaring, set each index of the array:
+```java
+menuItems[0] = "turkey burger";
+menuItems[1] = "blackened chicken alfredo";
+menuItems[2] = "chicken tenders";
+menuItems[3] = "brownie obsession";
+menuItems[4] = "chipotle yucatan salad";
+menuItems[5] = "cajun shrimp and chicken pasta";
+```
+Items can be changed after being assigned
+```java
+menuItems[5] = "mozzarella sticks";
+```
+When using `new` to create an empty array, each element is initialized with a default value depending on the data type defined for the array.
+|Data Type|Initialized Value|
+|--|--|
+| int | 0 |
+| double | 0.0 |
+| boolean | false |
+| Reference | null |
+For example, an empty array of Strings will have an initial value of all `null`s in each index.
+
+### Length
+.length property, just like JavaScript
+
+### `String[] args`
+- `String[]` is an array made up of strings
+- The `args` parameter is a string array
+	- The array `args` contains the arguments we pass in from the terminal when the class file is run
+```java
+public class HelloUser {
+	public static void main (String[] args) {
+		System.out.println("Hello " + args[0]);
+	}
+}
+```
+When we run the file `HelloUser` in the terminal with an argument of "Nicole":
+```console
+java HelloUser Nicole
+```
+The output will be:
+```console
+Hello Nicole
+```
+`String[] args` would be interpreted as an array with one element, `"Nicole"`.
+
+When we use `args[0]` in the main method, we can access that element, similar to in the HelloUser command.
+

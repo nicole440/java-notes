@@ -1,0 +1,74 @@
+# ArrayLists
+Mutable, dynamic lists
+- Store object references as elements
+- Store elements of the same type
+- Access elements by index
+- Add elements
+- Remove elements
+
+Need to import ArrayLists from Java's utility package:
+`import java.util.ArrayList;`
+
+## Creating ArrayLists
+Angle brackets `<` `>` are used to declare the data type of an ArrayList
+`ArrayList<String> babyNames;`
+`<` `>` are used for **generics**, or Java constructs that allow us to define classes and objects as parameters of an ArrayList.
+**Primitive data types cannot be used in an ArrayList**
+Instead, we use the `<Integer>`, `<Double>`, and `<Character>` generics.
+
+Initialize an empty ArrayList with the `new` keyword
+```java
+// Declaring:
+ArrayList<Integer> ages;
+ages = new ArrayList<Integer>();
+// Declare & initialize:
+ArrayList<String> babyNames = new ArrayList<String>();
+```
+## Adding an Item
+ArrayLists come with an `add()` method which inserts an element into the structure. Can be used two ways:
+1. To add an element to the end of the ArrayList, call `add()` using one argument that represents the value to be inserted.
+```java
+ArrayList<Car> carShow = new ArrayList<Car>();
+carShow.add(ferrari);
+carShow.add(thunderbird);
+carShow.add(camaro);
+```
+2. To add an element at a specific index, two arguments are used in the method call. The first will define the *index* of the new element, the second will define the *value* of the new element.
+```java
+carShow.add(1, corevette);
+carShow.add(2, tesla);
+```
+An error will occur if we try to insert a value at an index that doesn't exist.
+
+**If the data type is unspecified during initialization, the ArrayList can store different value types.**
+```java
+ArrayList assortment = new ArrayList<>();
+assortment.add("Hello");
+assortment.add(12);
+assortment.add(ferrari);
+```
+## ArrayList Size
+Display or reference the number of items in a list with the `size()` method.
+```java
+ArrayList<String> shoppingCart = new ArrayList<String>();  
+shoppingCart.add("Trench Coat");  
+System.out.println(shoppingCart.size());  
+// 1 is printed
+```
+## Accessing an Index
+The `get()` method allows us to access an index of an ArrayList.
+*Bracket notation works on arrays, but not for ArrayLists*
+`System.out.println(shoppingCart.get(2));`
+
+## Changing a Value
+The `set()` method lets us rewrite or change elements in an ArrayList.
+Two arguments are used in the `set()` method call. The first will define the *index* of the element to be modified, the second will define the new *value* of the element.
+
+## Removing an Item
+The `remove()` method lets us remove elements from an ArrayList. The argument passed into the method can be either the *index* **or** the *value* of the element which we want to remove.
+`shoppingCart.remove(1);`
+`shoppingCart.remove("Trench Coat");`
+
+## Getting an Item's Index
+Use `indexOf()` to find the index of a certain value.
+`System.out.println(detectives.indexOf("Fletcher"));`
