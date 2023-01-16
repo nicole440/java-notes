@@ -4,7 +4,7 @@ Simple, portable, secure, robust
 Java Virtual Machine - ensures same Java code can be run on different OS and platforms - "write once, run everywhere."
 ### Classes
 Think of classes like a single concept.
-```j
+```java
 public class HelloWorld {  
 
 }
@@ -18,7 +18,7 @@ End statements w/ semicolons (similar to JS and CSS)
 **Double quotes only**
 
 Print statements:
-```j
+```java
 System.out.println("Hello World");
 ```
 -   `System` is a built-in Java class that contains useful tools for our programs.
@@ -27,7 +27,7 @@ System.out.println("Hello World");
 
 **When using `println`, each statement will print on a new line.
 Instead use `System.out.print()` to print items to the same line,**
-```j
+```java
 System.out.print("Hello ");  
 System.out.print("World");
 // prints Hello World
@@ -158,7 +158,7 @@ Java has 3 main primitive data types:
 - boolean
 
 To declare a variable, specify the *type* and *name*.
-```j
+```java
 int age;
 double salaryRequirement;
 boolean isEmployed;
