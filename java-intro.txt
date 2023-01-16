@@ -1,0 +1,279 @@
+# Intro to Java
+Released by Sun Microsystems in 1995
+Simple, portable, secure, robust
+Java Virtual Machine - ensures same Java code can be run on different OS and platforms - "write once, run everywhere."
+### Classes
+Think of classes like a single concept.
+```j
+public class HelloWorld {  
+
+}
+```
+The concept of `HelloWorld` is: Hello World Printer. Other class concepts could be: Person, or: Savings Account.
+
+## Syntax
+The syntax inside of the curly braces is part of the class (similar to JS functions and CSS).
+Each word in the class name is capitalized (unlike camel casing in JS functions).
+End statements w/ semicolons (similar to JS and CSS)
+**Double quotes only**
+
+Print statements:
+```j
+System.out.println("Hello World");
+```
+-   `System` is a built-in Java class that contains useful tools for our programs.
+-   `out` is short for “output”.
+-   `println` is short for “print line”.
+
+**When using `println`, each statement will print on a new line.
+Instead use `System.out.print()` to print items to the same line,**
+```j
+System.out.print("Hello ");  
+System.out.print("World");
+// prints Hello World
+```
+### Commenting Code
+Same as JS, but also as **Javadoc** comments
+```java
+// single line comment
+/* this is how I would comment out a piece
+of code spanning multiple lines*/
+```
+**Javadoc** - Represented by **/**** and ***/**
+Used to create documentation for APIs
+*When writing Javadoc comments, they will eventually be used in the documentation that your users might read*
+Typically written before the declaration of fields, methods, and classes
+
+Java does not interpret *whitespace* but whitespace makes code easier to read.
+Java does interpret semicolons, which mark the end of a statement (one line of code that performs a single task).
+**There are no semicolons at the end of curly braces.**
+
+## Classes
+**Syntax:**
+```java
+accessModifier class ClassName {
+	dataType attributeOne;
+	dataType attributeTwo;
+	dataType attributeN;
+
+	static void classMethod {
+		//Method code here
+	}
+}
+```
+- class names must be in PascalCase and match the name of the file
+- `class` keyword creates classes
+- the accessModifier (`public`, `private`, `protected`) determines visibility to others
+- inside the class "blueprint" are *members*
+
+### Class Instances
+**Instances** are objects based on existing classes
+**Instance fields** are each instance's own set of variables, declared within the scope of the instance and supplied with new values within the class constructor method during initialization
+
+```java
+//Person.java
+public class Person {
+	int age;
+	String name;
+	
+	//Constructor method
+	public Person(int age, String name) {
+		this.age = age;
+		this name = name;
+	}
+	
+	public static void main(String[] args) {
+		Person Bob = new Person (31, "Bob");
+		Person Alice = new Person (27, "Alice");
+
+		System.out.println(Bob.name + " is " + Bob.age + ".");
+		System.out.println(Alice.name + " is " + Alice.age + ".");
+	}
+}	
+```
+
+- each instance of Person class has age and name field
+- when initialized, they are passed as arguments into the class constructor
+
+### Abstract Classes
+Classes can use `abstract` keyword to supply common method implementations to multiple subclasses
+*Any class that contains abstraction (methods, fields, etc.) must also be abstract*
+
+```java
+//Person.java
+abstract class Person {
+	in age;
+	String name:
+
+	abstract void talk(String message);
+}
+```
+## `main()` Method
+Every application must contain a `main()` method, which serves as the entry point for the application
+*All other methods are invoked from the `main()` method*
+
+## Compilation
+### Catching Errors
+- Java is a *compiled* language, meaning the code we write in a .java file is transformed into *byte code* by a compiler before it is executed by the JVM on your computer
+- A **compiler** is a program that translates human-friendly programming languages into other programming languages that computers can execute.
+- Compiling catches mistakes before the computer runs our code
+	- *A file containing code that doesn't pass the compiler's checks won't be compiled*
+
+### Creating Executables
+```console
+javac MyProgram.java
+```
+Once compiled, the compiler produces an *executable* **.class** file, which can be executed from the terminal:
+```console
+java MyProgram
+```
+*We don't include the **.class** distinction*
+## Java Program Structure
+Classes are PascalCase
+Variables & methods are camelCase
+```java
+System.out.println("Hello World!");
+```
+- `System` and `out` (short for 'output') are **objects**
+- **Objects are packages of *state* and *behavior*, and are often modeled on real-world things.**
+- The `System` object represents our computer within the program
+- *Dot notation* is used to access parts of an object
+
+## What is an IDE?
+**I**ntegrated **D**evelopment **E**nvironment
+Tool for programmers to:
+- edit source code
+- build executables
+- debug
+*... all in a single application*
+
+IDEs for Java: **IntelliJ**, Eclipse, NetBeans, BlueJ
+
+## Variables
+Variables are named locations in memory
+
+Java has 3 main primitive data types:
+- int
+- double
+- boolean
+
+To declare a variable, specify the *type* and *name*.
+```j
+int age;
+double salaryRequirement;
+boolean isEmployed;
+```
+To assign a value to the variable, use the assignment operator, `=`
+`age = 85;`
+
+When code is used to represent a *fixed value*, it is referred to as a **literal**.
+
+It is common to declare *and* assign a value in a single line
+`int yearBorn = 1988;`
+
+### `int`
+Variable type that can hold whole numbers ( + or -, or 0)
+- no fractions or decimals
+- can hold values between -2,147,483,648 and 2,147,483,647, inclusive
+### `doubles`
+Variable type that holds decimals, or very large or very small numbers, outside of the range of `int`
+### `booleans`
+True or false
+### `char`
+- can hold any single character, such as a letter, space, or question mark
+- must be surrounded by single quotes
+### String
+**Objects**, not primitive data types
+String objects can be created in two ways:
+- with a String literal - any sequence of characters enclosed in double quotes
+	- `String greeting = "Hello World";`
+- By calling the String class to create a new String object
+	- `String salutations = new String("Hello World");`
+#### Escape Sequences
+3 escape sequences, each begins with a backslash (`\`)
+- `\"` escape sequence lets us add quotes to a String value
+```java
+System.out.println("\"Hello World\"");
+// Prints "Hellow World"
+```
+- `\\` escape sequence lets us use backslashes in strings
+```java
+System.out.println("This is a backslash:\\");
+// Prints This is a backslash: \
+```
+- `\n` escape sequence creates a new line
+```java
+System.out.println("Hello\nGoodbye");
+/*
+Prints:
+Hello
+Goodbye
+*/
+```
+### Static Checking
+Java has *static typing*, so it won't compile if a variable is assigned to the wrong type
+*This is helpful to catch bugs during programming, rather than execution*
+### Naming
+Variable names must...
+- start with a valid letter, $, or _
+- be written in camelCase
+- be descriptive
+
+## Manipulating Variables
+The data type of an expression is determined by the resulting value
+ex. if an expression uses two `int` values, it will evaluate to an `int` value
+
+Increment operator: `++`
+Decrement operator: `--`
+
+`numPicsOfCats++`
+
+### Arithmetic Operators
+`+` `-` `*` `/` `%`
+
+Division operator does **integer division** meaning any remainder is lost.
+```java
+int unevenlyDivided = 10 / 4;
+// holds 2, because 10 divided by 4 is 2.5
+```
+**`int` doesn't round the decimal, but floors it**
+
+`double` *can* hold small, whole numbers, especially if we want to see precise amounts/decimals in equations
+
+Modulo - gives the *remainder* after 2 numbers are divided
+*If we bake 10 cookies and gave them out in batches of 3, how many will be left over?*
+Helpful in determining whether even or odd
+
+### Compound Assignment Operators
+Perform arithmetic operations on a variable then reassign its value
+`+=` `-=` `*=` `/=` `%=`
+### Relational Operators
+Make **boolean** comparisons
+`<` `>`
+```java
+double myBalance = 200.05;
+double newLaptop = 1000.05;
+boolean canBuyLaptop = myBalance > newLaptop;
+// canBuyLaptop is false
+```
+### Equal / Not Equal
+Used to compare numbers, like `int` or `double`
+`==` `!=`
+### `.equals()`
+Built-in method to compare objects
+Can't use `==` or `!=` or relational operators on strings
+```java
+String person1 = "Paul";
+String person2 = "John";
+String person3 = "Paul";
+
+System.out.println(person1`.equals(person2));
+// Prints false
+```
+### String Concatenation
+*Same as JavaScript*
+Joins strings together with strings or a variable using `+`
+**Java will convert another data type to a string automatically when concatenating**
+###`final` Keyword
+Use to prepend a variable declaration to declare that it cannot be manipulated
+`final int yearBorn = 1988;`

@@ -1,0 +1,83 @@
+# Conditionals & Control Flow
+## Intro to Control Flow
+Conditional statements, also known as *if-then* statements check a boolean condition and run a block of code depending on the condition
+Curly braces mark the scope
+### If-Then Statements
+Tests an expression for truth and executes code based on it
+
+Begins with `if`, then a boolean statement in `()`, then `{}` containing the block of code which will only run of the statement evaluates true
+*If the condition is short enough to fit on one line, the curly braces can be ommitted*
+`if(true) System.out.println("Brevity");`
+### If-Then-Else
+If the conditional statement evaluates false, `else` code block executes
+The else block has its own curly braces
+### If-Then-Else-If
+Conditional statements can be chained together to check as many conditions as needed
+```java
+if
+else if
+else if
+else
+```
+### Nested Conditional Statements
+Placing other conditional statements inside other conditional statements
+```java
+if(outer condition) {
+	if (nested condition) {
+		//Instructions to be executed if both true
+	}
+}
+```
+### Switch Statements
+
+```java
+public double calculateShipping() {
+	double shippingCost;
+	// declare switch statement here
+	switch (shipping) {
+		case "Regular":
+			shippingCost = 0;
+			break;
+		case "Express":
+			shippingCost = 1.75;
+			break;
+		default: shippingCost = .50;
+		}
+	return shippingCost;
+}
+```
+## Conditional Operators
+Operators that only use boolean values help simplify expressions with complex boolean relationships by reducing multiple booleans to a single true or false value
+`&&` `||` `!`
+AND  OR  NOT
+### && Operator
+Can replace nested *if-then* statements
+Only evaluates true if both statements are true
+```java
+if (tuitionPaid && preworkDone) {
+	//send laptop
+}
+```
+### || Operator
+Evaluates true if either condition is true
+If both false, evaluates false
+
+*short-circuited evaluation*
+
+### Logical NOT: !
+*Unary operator*, works on a single vlaue
+`true = !false`
+### Combining Conditional Operators
+Can use multiple operators in a single expression
+
+Order of evaluation:
+1. Parentheses
+2. NOT - !
+3. &&
+4. ||
+
+*Example*:
+```java
+boolean foo = true && !(false || !true)
+// foo is true
+```

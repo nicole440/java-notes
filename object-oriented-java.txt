@@ -1,0 +1,232 @@
+# Object-Oriented Java
+## Classes & Objects
+Object-oriented programming (OOP) allows developers to create their own data types
+
+A **class** is a specification of this new data type - a blueprint which tells the language what the new data type looks like and what makes it up.
+
+An **object** is an instance of a class
+ex. Student class; janeDoe object
+
+*An object is the implementation of the class; the class defines what the data type looks like.*
+
+## Intro to Classes
+OOP means programs are built around objects and their interactions
+An object contains state and behavior
+- State - fields (similar to JS properties)
+- Behavior - methods (similar to JS functions)
+
+Class - set of instructions that describe how an instance (object) can behave and what info it contains.
+
+`System` is a pre-defined class
+`public` is an **access level modifier** that allows other classes to interact with the class
+```java
+public class Store {
+	// instance fields
+	String productType;
+	int inventoryCount;
+	double inventoryPrice;
+
+	// constructor method
+	public Store(String product, int count, double price) {
+		productType = product;
+		inventoryCount = count;
+		inventoryPrice = price;
+	}
+
+	// main method
+	public static void main(String[] args) {
+		Store lemonadeStand = new Store("lemonade", 42, .99);
+		Store cookieShop = new Store("cookies", 12, 3.75);
+		System.out.println("Our first shop sells " + lemonadeStand.productType + " at " + lemonadeStand.inventoryPrice + " per unit.");
+		System.out.println("Our second shop has " + cookieShop.inventoryCount + " units remaining.");
+	}
+}
+```
+### Constructors
+Defined within the class, constructors are needed to create an object (instance)
+To create the instance, we call (or invoke) the constructor within the method.
+```java
+public class Car {
+
+	public Car() {
+		/* this is the constructor method, used to provide instructions for creating car instance */
+	}
+	public static void main(String[] args) {
+		//invoke the constructor
+		Car ferrari = new Car();
+	}
+}
+```
+- Instances are created/declared in the `main()` method of a class
+- In declaration, the class name is used as the variable's type.
+- We use `new` to indicate we're creating an instance for the invocation of the constructor method.
+- Rather than declaring a variable with a primitive data type, the variable `ferrari` is declared as a **reference data type** meaning the value of the variable is a reference to an instance's memory address.
+*Outputting the value of `ferrari` would show its memory address*
+
+### Instance fields/variables
+When an object is created, **the constructor sets the initial state of the object**. The state is made up of associated data that represents the characteristics of an object. Data is added to an object with **instance variables**, or **instance fields**.
+- *Instance variables are the "has-a" relationship with an object -- ex. a car has a color, a transmission type, average MPG, etc.*
+- *Fields* are a type of state each instance will possess, e.g., car color. One *instance* may be red, another blue.
+- Instance variables are the nouns and adjectives associated with an object.
+
+**Instance variables are declared within the class scope, and assigned in the constructor**
+
+```java
+public class Car {  
+	/*  
+	declare fields inside the class  
+	by specifying the type and name  
+	*/  
+	String color;  
+  
+	public Car() {  
+		/*  
+		instance fields available in  
+		scope of constructor method  
+		*/  
+	}  
+  
+	public static void main(String[] args) {  
+		// body of main method  
+	}  
+}
+```
+### Constructor Parameters
+- To assign a value to an instance variable, we need to alter the constructor method to include parameters so it can access the data we want to assign.
+- When a string value gets passed into the constructor method, it is assigned to the parameter's variable name.
+- Then, inside the constructor, the parameter will be assigned as the value of the instance variable.
+
+**The method has a signature which defines the name and parameters of the method.** A signature consists of the constructor’s name and then the data type and name of each of its parameters, ex. `Object(String itsParameter)` 
+```java
+public class Car {  
+	String color;  
+	// constructor method with a parameter  
+	public Car(String carColor) {  
+		// parameter value assigned to the field  
+		color = carColor;  
+	}  
+	public static void main(String[] args) {  
+		// program tasks  
+	}  
+}
+```
+Two types of parameters: *formal* and *actual*
+- Formal: specifies the type and name of data that can be passed into a method
+	- ex. `public Car(String carColor)`, where carColor will represent whatever `String` value is passed into the constructor
+- Actual: (aka *argument*): refers to the value being passed during a method call
+
+*Constructor overloading* allows a class to have multiple constructors as long as they have different parameter values.
+- The signature helps the compiler differentiate between the different methods
+- When an object is initialized, the compiler will know which constructor to use because of the values passed into it.
+```java
+public class Car {  
+	String color;  
+	int mpg;  
+	boolean isElectric;  
+  
+	// constructor 1  
+	public Car(String carColor, int milesPerGallon) {  
+		color = carColor;  
+		mpg = milesPerGallon;  
+	}  
+	// constructor 2  
+	public Car(boolean electricCar, int milesPerGallon) {  
+		isElectric = electricCar;  
+		mpg = milesPerGallon;  
+	}  
+}
+```
+In the above, if we were to initialize the object `Car myCar = new Car(true, 40)`, the compiler will know to use the second constructor because the arguments match the type and order of the second constructor's signature.
+
+***Question: Wwhat if the data types of the parameter values are all the same? i.e. all String, or boolean? How can it tell?***
+
+If a constructor is not defined, the compiler will generate a default constructor without arguments, and assigns the object default values
+**Default values can be created by assigning values to the instance fields during declaration:**
+```java
+public class Car {  
+	String color = "red";  
+	boolean isElectric = false;  
+	int cupHolders = 4;  
+  
+	public static void main(String[] args) {  
+		Car myCar = new Car();  
+		System.out.println(myCar.color); // Prints: red  
+	}  
+}
+```
+### Assigning Values to Instance Fields
+The value passed into the constructor method call as an argument
+*The type of value given to the invocation must match what is declared by the parameter*
+```java
+public class Car {  
+	String color;  
+  
+	public Car(String carColor) {
+		// 2. assignment of parameter value to instance field
+		color = carColor;
+	}  
+  
+	public static void main(String[] args) {
+		// 1. constructor method call supplying parameter value
+		Car ferrari = new Car("red");
+		System.out.println(ferarri.color); // Prints red
+	}  
+}
+ferrari.color;
+// Prints red
+```
+Access the value of the field using dot operator
+
+*Note: we don't need to specify the data type during assignment because it is already defined in its declaration in the class scope.*
+### Multiple Fields
+- Can declare as many fields as necessary
+- Add multiple parameters to the constructor method to correspond to the fields
+	- Assign value of each parameter to its respective declared field using format `field = parameter` *(formal parameter, but without the type indicator)*.
+- In the method call, new values passed in should be separated with commas, and must be listed in the same order as listed in the parameters *(IntelliJ helps with this!)*.
+
+## Java Methods
+**Methods** - Repeatable, modular blocks of code used to accomplish specific tasks. We can define our own methods that will take input, do something with it, and return the find of output we want.
+**Method decomposition** - using methods to break down a large problem into a smaller, more manageable problem
+**Procedural abstraction** - knowing what a method does, but not how it accomplishes it.
+*Example*: for a method called `makeSandwich()`, it's pretty clear what that will do, but you don't actually need to know the details of how it works in order to utilize it.
+### Defining Methods
+`public` means other classes can access the method(s) therein
+`void` means the method does not return or output a specific value
+**Method signature** - the method's name and its parameter *type* (not the whole name)
+*Examples*: `checkBalance()`, `startRadio(double, String)`
+### Calling Methods
+*A non-static method on a class is available to use on any object of that class.* In order to execute a method, we must call the method on the object, using dot notation
+*Example*: `myFastCar.startEngine()`
+### Scope
+The scope of a method is the domain marked by its curly braces
+Variables declared on the class can be accessed anywhere in the class, but
+variables declared outside of the scope of a particular method (such as within the scope of another method) cannot be accessed by that method
+### Adding Parameters
+Parameters can be added to the methods to pass info from one method to another. This also changes the method's signature.
+*Example*: `startRadio(double, String)`
+
+Through method overloading, programs can contain multiple methods with the same name, as long as the *parameter list* is unique.
+*Example*: `startRadio(double, String)` and `startRadio(double)` are both acceptable within the same program.
+### Reassigning Instance Fields
+Instance fields can be reassigned to new variables in a method's body
+*Example*: a balance updating on an account after a withdrawal/deposit
+
+### Returns
+Variables only exist in the scope in which they were declared, unless they are returned by the method. Once a return statement is executed, the compiler exits the function.
+*When we want a method to return a value, we stop using `void` and replace it with the **data type** which will be returned by the method.*
+**They must match!**
+
+**Return by value**
+
+If a method would return an *object* rather than a primitive data type, the value returned is a reference to that object's location in memory.
+### The `toString()` Method
+A method which can be added to a class to return an object
+*Remember to indicate the data type on the method!*
+```java
+public String toString() {
+
+}
+```
+When writing programs, it is helpful to frame the tasks we create in terms of methods
+- What input is needed?
+- What output is expected?
