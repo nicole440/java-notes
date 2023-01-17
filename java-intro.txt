@@ -9,7 +9,6 @@ public class HelloWorld {
 
 }
 ```
-The concept of `HelloWorld` is: Hello World Printer. Other class concepts could be: Person, or: Savings Account.
 
 ## Syntax
 The syntax inside of the curly braces is part of the class (similar to JS functions and CSS).
@@ -21,7 +20,7 @@ Print statements:
 ```java
 System.out.println("Hello World");
 ```
--   `System` is a built-in Java class that contains useful tools for our programs.
+-   `System` is a built-in Java class that contains useful tools.
 -   `out` is short for “output”.
 -   `println` is short for “print line”.
 
@@ -36,16 +35,16 @@ System.out.print("World");
 Same as JS, but also as **Javadoc** comments
 ```java
 // single line comment
-/* this is how I would comment out a piece
+/* this is how to comment out a block
 of code spanning multiple lines*/
 ```
 **Javadoc** - Represented by **/**** and ***/**
 Used to create documentation for APIs
-*When writing Javadoc comments, they will eventually be used in the documentation that your users might read*
+*When writing Javadoc comments, they will eventually be used in the documentation that users might read*
 Typically written before the declaration of fields, methods, and classes
 
-Java does not interpret *whitespace* but whitespace makes code easier to read.
-Java does interpret semicolons, which mark the end of a statement (one line of code that performs a single task).
+Java does not interpret *whitespace*, but it makes code easier to read.
+Java *does* interpret semicolons, which mark the end of a statement (one line of code that performs a single task).
 **There are no semicolons at the end of curly braces.**
 
 ## Classes
@@ -68,31 +67,31 @@ accessModifier class ClassName {
 
 ### Class Instances
 **Instances** are objects based on existing classes
-**Instance fields** are each instance's own set of variables, declared within the scope of the instance and supplied with new values within the class constructor method during initialization
+**Instance fields** are each object's own set of variables, declared within the scope of the instance and supplied with new values within the class constructor method during initialization
 
 ```java
-//Person.java
-public class Person {
+//Cat.java
+public class Cat {
 	int age;
 	String name;
 	
 	//Constructor method
-	public Person(int age, String name) {
+	public Cat(int age, String name) {
 		this.age = age;
 		this name = name;
 	}
 	
 	public static void main(String[] args) {
-		Person Bob = new Person (31, "Bob");
-		Person Alice = new Person (27, "Alice");
+		Cat Jakob = new Cat (10, "Jakob");
+		Cat Pigpen = new Cat (9, "Pigpen");
 
-		System.out.println(Bob.name + " is " + Bob.age + ".");
-		System.out.println(Alice.name + " is " + Alice.age + ".");
+		System.out.println(Jakob.name + " is " + Jakob.age + ".");
+		System.out.println(Pigpen.name + " is " + Pigpen.age + ".");
 	}
 }	
 ```
 
-- each instance of Person class has age and name field
+- each instance of Cat class has age and name field
 - when initialized, they are passed as arguments into the class constructor
 
 ### Abstract Classes
@@ -100,9 +99,9 @@ Classes can use `abstract` keyword to supply common method implementations to mu
 *Any class that contains abstraction (methods, fields, etc.) must also be abstract*
 
 ```java
-//Person.java
-abstract class Person {
-	in age;
+//Cat.java
+abstract class Cat {
+	int age;
 	String name:
 
 	abstract void talk(String message);
@@ -114,7 +113,7 @@ Every application must contain a `main()` method, which serves as the entry poin
 
 ## Compilation
 ### Catching Errors
-- Java is a *compiled* language, meaning the code we write in a .java file is transformed into *byte code* by a compiler before it is executed by the JVM on your computer
+- Java is a *compiled* language, meaning the code we write in a .java file is transformed into *byte code* by a compiler before it is executed by the JVM on the computer
 - A **compiler** is a program that translates human-friendly programming languages into other programming languages that computers can execute.
 - Compiling catches mistakes before the computer runs our code
 	- *A file containing code that doesn't pass the compiler's checks won't be compiled*
@@ -127,7 +126,7 @@ Once compiled, the compiler produces an *executable* **.class** file, which can 
 ```console
 java MyProgram
 ```
-*We don't include the **.class** distinction*
+*Don't include the **.class** distinction*
 ## Java Program Structure
 Classes are PascalCase
 Variables & methods are camelCase
@@ -135,7 +134,7 @@ Variables & methods are camelCase
 System.out.println("Hello World!");
 ```
 - `System` and `out` (short for 'output') are **objects**
-- **Objects are packages of *state* and *behavior*, and are often modeled on real-world things.**
+- **Objects are packages of *state* and *behavior*, and are modeled after real-world things.**
 - The `System` object represents our computer within the program
 - *Dot notation* is used to access parts of an object
 
@@ -164,7 +163,7 @@ double salaryRequirement;
 boolean isEmployed;
 ```
 To assign a value to the variable, use the assignment operator, `=`
-`age = 85;`
+`age = 34;`
 
 When code is used to represent a *fixed value*, it is referred to as a **literal**.
 
@@ -175,9 +174,9 @@ It is common to declare *and* assign a value in a single line
 Variable type that can hold whole numbers ( + or -, or 0)
 - no fractions or decimals
 - can hold values between -2,147,483,648 and 2,147,483,647, inclusive
-### `doubles`
+### `double`
 Variable type that holds decimals, or very large or very small numbers, outside of the range of `int`
-### `booleans`
+### `boolean`
 True or false
 ### `char`
 - can hold any single character, such as a letter, space, or question mark
@@ -188,7 +187,7 @@ String objects can be created in two ways:
 - with a String literal - any sequence of characters enclosed in double quotes
 	- `String greeting = "Hello World";`
 - By calling the String class to create a new String object
-	- `String salutations = new String("Hello World");`
+	- `String greeting = new String("Hello World");`
 #### Escape Sequences
 3 escape sequences, each begins with a backslash (`\`)
 - `\"` escape sequence lets us add quotes to a String value
@@ -212,7 +211,7 @@ Goodbye
 ```
 ### Static Checking
 Java has *static typing*, so it won't compile if a variable is assigned to the wrong type
-*This is helpful to catch bugs during programming, rather than execution*
+*This is helpful to catch bugs during programming, rather than on execution*
 ### Naming
 Variable names must...
 - start with a valid letter, $, or _
@@ -267,7 +266,7 @@ String person1 = "Paul";
 String person2 = "John";
 String person3 = "Paul";
 
-System.out.println(person1`.equals(person2));
+System.out.println(person1.equals(person2));
 // Prints false
 ```
 ### String Concatenation
